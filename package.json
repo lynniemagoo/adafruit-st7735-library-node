@@ -1,0 +1,37 @@
+{
+  "name": "adafruit-st7735-library",
+  "version": "1.0.0",
+  "description": "NodeJS Promise-based port of C/C++ Adafruit-ST7735-Library from Github - Library for Family of ST77XX TFT displays including ST7735, ST7789.",
+  "main": "index.js",
+  "dependencies": {
+    "adafruit-gfx-library": "^1.0.0"
+  },  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lynniemagoo/adafruit-st7735-library"
+  },
+  "keywords": [
+    "raspberry",
+    "raspi",
+    "rpi",
+    "pi",
+    "node",
+    "i2c",
+    "spi",
+    "canvas",
+    "adafruit",
+    "display",
+    "tft",
+    "oled",
+    "ssd1306"
+  ],
+  "author": "Lyndel McGee",
+  "email": "LynnieMagoo@yahoo.com",
+  "license": "MIT"
+}
