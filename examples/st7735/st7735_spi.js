@@ -132,8 +132,8 @@ function createDisplayOptions(namedDisplayType) {
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
                 rstGpioNb:12, // If desire is to have hardware reset controlled by this module,
-                          // by this module, set this value. (-1 is default)
-                          // if set to -1 then will not be used.
+                              // by this module, set this value. (-1 is default)
+                              // if set to -1 then will not be used.
                 spiDeviceNumber:1,
                 spiMaxSpeedHz:60000000,
                 reverseInversionMode:true,
@@ -151,8 +151,8 @@ function createDisplayOptions(namedDisplayType) {
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
                 rstGpioNb:12, // If desire is to have hardware reset controlled by this module,
-                          // by this module, set this value. (-1 is default)
-                          // if set to -1 then will not be used.
+                              // by this module, set this value. (-1 is default)
+                              // if set to -1 then will not be used.
                 spiBusNumber:0,
                 spiDeviceNumber:1,
                 spiMaxSpeedHz:60000000,
@@ -170,9 +170,9 @@ function createDisplayOptions(namedDisplayType) {
 }
 
 async function main() {
-    //const displayType = "ADAFRUIT-358";
+    const displayType = "ADAFRUIT-358";
     //const displayType = "DOLLATEK-096-160-80";
-    const displayType = "DOLLATEK-144-128-128";
+    //const displayType = "DOLLATEK-144-128-128";
     const displayOptions = createDisplayOptions(displayType);
     const display = new Adafruit_ST7735(displayOptions);
     console.log("SPI Modes:", Adafruit_ST7735.SPI_MODES);
