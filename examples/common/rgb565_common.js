@@ -1,20 +1,20 @@
-/*************************************************** 
-  This set of common test scripts can be used for 
+/***************************************************
+  This set of common test scripts can be used for
   RGB565 TFT displays.
 
-  These displays use SPI to communicate, 4 or 5 pins are required to  
+  These displays use SPI to communicate, 4 or 5 pins are required to
   interface
-  Adafruit invests time and resources providing this open source code, 
-  please support Adafruit and open-source hardware by purchasing 
+  Adafruit invests time and resources providing this open source code,
+  please support Adafruit and open-source hardware by purchasing
   products from Adafruit!
 
-  Written by Limor Fried/Ladyada for Adafruit Industries.  
+  Written by Limor Fried/Ladyada for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
-  
+
   Code ported to NodeJS by Lyndel R. McGee
-  Original source of this code was: 
+  Original source of this code was:
   https://github.com/adafruit/Adafruit-SSD1351-library
-  
+
   The Adafruit GFX Graphics core library is also required
   https://github.com/adafruit/Adafruit-GFX-Library
   Be sure to install it!
@@ -47,7 +47,7 @@ const YELLOW  = 0xFFE0;
 const WHITE   = 0xFFFF;
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Renders a simple test pattern on the screen
 */
 /**************************************************************************/
@@ -79,7 +79,7 @@ async function testLines(display, color) {
             // that modify the buffer or display.
             await display.drawLine(0, 0, w-1, y, color);
         }
-        
+
         await display.fillScreen(BLACK);
         for (x=0; x < w-1; x+=6) {
             await display.drawLine(w-1, 0, x, h-1, color);
@@ -95,7 +95,7 @@ async function testLines(display, color) {
         for (y=0; y < h-1; y+=6) {
             await display.drawLine(0, h-1, w-1, y, color);
         }
-        
+
         await display.fillScreen(BLACK);
         for (x=0; x < w-1; x+=6) {
             await display.drawLine(w-1, h-1, x, 0, color);
@@ -136,7 +136,7 @@ async function testFastLines(display, color1, color2) {
 }
 
 async function tftPrintTest(display, colors = [WHITE], loop_delay = 1) {
-    
+
     // async doWork not required as not looping here.
 
     await display.fillScreen(BLACK);
@@ -160,7 +160,7 @@ async function tftPrintTest(display, colors = [WHITE], loop_delay = 1) {
     await delay(1500);
 
     await display.fillScreen(BLACK);
-    
+
     await display.setCursor(0, 5)
                  .setTextColor(WHITE)
                  .setTextSize(0)
@@ -171,7 +171,7 @@ async function tftPrintTest(display, colors = [WHITE], loop_delay = 1) {
                  .print(Math.PI.toFixed(6))
                  .println(" Want pi?")
                  .println(" ");
-           
+
     //await display.print(8675309, HEX); // print 8,675,309 out in HEX!
     const value = 8675309;
     await display.print("0x" + value.toString(16).toUpperCase().padStart(8, "0")) // print 8,675,309 out in HEX!
@@ -264,14 +264,14 @@ async function testRoundRects(display) {
 
 async function testTriangles(display) {
     const ow = display.width(), oh = display.height();
-    
+
     const doWork = async _ => {
         let color = RED,
             w = ow/2,
             x = oh,
             y = 0,
             z = ow;
-    
+
         await display.fillScreen(BLACK);
 
         for(let t = 0 ; t <= 15; t+=1) {
@@ -289,7 +289,7 @@ async function testTriangles(display) {
 async function testMediaButtons(display) {
 
     // doWork async inline function not required as not looping here.
-    
+
     await display.fillScreen(BLACK);
 
     // play
@@ -312,7 +312,7 @@ async function testMediaButtons(display) {
     await display.fillRoundRect(69, 98, 20, 45, 5, RED);
 
     // play color
-    await display.fillTriangle(42, 20, 42, 60, 90, 40, GREEN);    
+    await display.fillTriangle(42, 20, 42, 60, 90, 40, GREEN);
 }
 
 
@@ -323,7 +323,7 @@ async function testCP437CharacterSet(display, color) {
         const previousCP437 = display.getCP437();
 
         await display.fillScreen(BLACK);
-            
+
         await display.setTextSize(1)                // Normal 1:1 pixel scale
                      .setTextWrap(false)
                      .setTextColor(color)   // Draw colored text
@@ -429,7 +429,7 @@ async function testAnimate(display, bitmap, bitmapWidth, bitmapHeight, animateTi
 
 async function testDrawBitmap(display, color) {
     const w = display.width(), h = display.height();
-    
+
     //display.drawBitmap(
     await display.draw1BitBitmap((w  - LOGO_WIDTH ) / 2,
                                  (h - LOGO_HEIGHT) / 2,
@@ -479,7 +479,7 @@ module.exports = {
     testCP437CharacterSet,
     testTextStyles,
     testDrawBitmap,
-    /* exported for use with testAnimate */    
+    /* exported for use with testAnimate */
     LOGO_BMP,
     LOGO_HEIGHT,
     LOGO_WIDTH,

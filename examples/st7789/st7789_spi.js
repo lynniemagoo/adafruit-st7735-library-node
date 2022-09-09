@@ -26,9 +26,9 @@
   products from Adafruit!
 
   Written by Limor Fried/Ladyada for Adafruit Industries.
-  
+
   Ported to NodeJS by Lyndel R. McGee
-  
+
   MIT license, all text above must be included in any redistribution
  **************************************************************************/
 'use strict';
@@ -83,7 +83,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:240,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -91,14 +91,14 @@ function createDisplayOptions(namedDisplayType) {
                 spiMaxSpeedHz:60000000
             }
             break;
-            
+
         case "ADAFRUIT-4311":
             displayOptions = {
                 width:240,
                 height:320,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -106,14 +106,14 @@ function createDisplayOptions(namedDisplayType) {
                 spiMaxSpeedHz:60000000
             }
             break;
-            
+
         case "ADAFRUIT-4383":
             displayOptions = {
                 width:135,
                 height:240,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -121,14 +121,14 @@ function createDisplayOptions(namedDisplayType) {
                 spiMaxSpeedHz:60000000
             }
             break;
-            
+
         case "ADAFRUIT-5206":
             displayOptions = {
                 width:280,
                 height:240,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -136,14 +136,14 @@ function createDisplayOptions(namedDisplayType) {
                 spiMaxSpeedHz:60000000
             }
             break;
-            
+
         case "ADAFRUIT-5393":
             displayOptions = {
                 width:320,
                 height:172,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -151,14 +151,14 @@ function createDisplayOptions(namedDisplayType) {
                 spiMaxSpeedHz:60000000
             }
             break;
-            
+
         case "ADAFRUIT-5394":
             displayOptions = {
                 width:320,
                 height:170,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -173,7 +173,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:240,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -190,7 +190,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:320,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -207,7 +207,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:240,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -231,7 +231,7 @@ async function main() {
     const display = new Adafruit_ST7789(displayOptions);
     console.log("SPI Modes:", Adafruit_ST7789.SPI_MODES);
     console.log("SPI Defaults:", Adafruit_ST7789.SPI_DEFAULTS);
-    
+
     // Startup display - same as original adafruit begin() but options specified in the constructor.
     await display.startup();
     await delay(1000);
@@ -243,7 +243,7 @@ async function main() {
     while (count--) {
         await display.setRotation(rotation);
         console.log("rotation:%d", rotation);
-        
+
         await display.fillScreen(BLACK);
         await lcdTestPattern(display);
         await delay(step_delay);
@@ -266,7 +266,7 @@ async function main() {
                            "malesuada nunc bibendum. Nullam aliquet ultrices massa eu hendrerit. " +
                            "Ut sed nisi lorem. In vestibulum purus a tortor imperdiet posuere. ", WHITE);
         await delay(step_delay);
-        
+
         await display.fillScreen(BLACK);
         await testTextStyles(display, BLUE, WHITE);
         await delay(step_delay);

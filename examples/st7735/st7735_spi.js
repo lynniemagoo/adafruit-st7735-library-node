@@ -21,7 +21,7 @@
   Written by Limor Fried/Ladyada for Adafruit Industries.
 
   Ported to NodeJS by Lyndel R. McGee
-  
+
   MIT license, all text above must be included in any redistribution
  **************************************************************************/
 'use strict';
@@ -77,36 +77,36 @@ function createDisplayOptions(namedDisplayType) {
                 height:160,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.        spiDeviceNumber:0,
                 spiBusNumber:0,
                 spiDeviceNumber:0,
                 spiMaxSpeedHz:60000000,
                 display_model:"ST7735R",
-                init_options:0x02 /* INITR_BLACKTAB 
+                init_options:0x02 /* INITR_BLACKTAB
                                      TBD see source code for 7735R vs 7735B vs 7735S */
             }
             break;
-            
+
         case "ADAFRUIT-2088":
             displayOptions = {
                 width:128,
                 height:128,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
                 spiDeviceNumber:0,
                 spiMaxSpeedHz:60000000,
                 display_model:"ST7735R",
-                init_options:0x02 /* INITR_BLACKTAB 
+                init_options:0x02 /* INITR_BLACKTAB
                                      TBD see source code for 7735R vs 7735B vs 7735S */
             }
             break;
-            
+
         case "WAVSHARE-240-240":
             // WaveShare ST7789 requires reversal of InversionMode.
             displayOptions = {
@@ -114,7 +114,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:240,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:25, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:25, // If desire is to have hardware reset controlled by this module,
                               // by this module, set this value. (-1 is default)
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -131,7 +131,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:80,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:12, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:12, // If desire is to have hardware reset controlled by this module,
                           // by this module, set this value. (-1 is default)
                           // if set to -1 then will not be used.
                 spiDeviceNumber:1,
@@ -150,7 +150,7 @@ function createDisplayOptions(namedDisplayType) {
                 height:128,
                 rotation:0,
                 dcGpioNb:24,  // If module requires Data/Clock GPIO, specify it (-1 is default)
-                rstGpioNb:12, // If desire is to have hardware reset controlled by this module, 
+                rstGpioNb:12, // If desire is to have hardware reset controlled by this module,
                           // by this module, set this value. (-1 is default)
                           // if set to -1 then will not be used.
                 spiBusNumber:0,
@@ -177,7 +177,7 @@ async function main() {
     const display = new Adafruit_ST7735(displayOptions);
     console.log("SPI Modes:", Adafruit_ST7735.SPI_MODES);
     console.log("SPI Defaults:", Adafruit_ST7735.SPI_DEFAULTS);
-    
+
     // Startup display - same as original adafruit begin() but options specified in the constructor.
     await display.startup();
     await delay(1000);
@@ -189,7 +189,7 @@ async function main() {
     while (count--) {
         await display.setRotation(rotation);
         console.log("rotation:%d", rotation);
-        
+
         await display.fillScreen(BLACK);
         await lcdTestPattern(display);
         await delay(step_delay);
@@ -212,7 +212,7 @@ async function main() {
                            "malesuada nunc bibendum. Nullam aliquet ultrices massa eu hendrerit. " +
                            "Ut sed nisi lorem. In vestibulum purus a tortor imperdiet posuere. ", WHITE);
         await delay(step_delay);
-        
+
         await display.fillScreen(BLACK);
         await testTextStyles(display, BLUE, WHITE);
         await delay(step_delay);
