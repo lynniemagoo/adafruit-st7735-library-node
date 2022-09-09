@@ -6,6 +6,12 @@
   "dependencies": {
     "adafruit-gfx-library": "^1.0.0"
   },  
+  "files": {
+    "lib": "lib"
+  },
+  "directories": {
+    "example": "examples"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
