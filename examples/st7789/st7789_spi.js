@@ -225,8 +225,8 @@ function createDisplayOptions(namedDisplayType) {
 }
 
 async function main() {
-    //const displayType = "ADAFRUIT-3787";
-    const displayType = "WAVSHARE-240-240";
+    const displayType = "ADAFRUIT-3787";
+    //const displayType = "WAVSHARE-240-240";
     const displayOptions = createDisplayOptions(displayType);
     const display = new Adafruit_ST7789(displayOptions);
     console.log("SPI Modes:", Adafruit_ST7789.SPI_MODES);
@@ -236,7 +236,7 @@ async function main() {
     await display.startup();
     await delay(1000);
 
-    let count = 1,
+    let count = 4,
         rotation = 0,
         step_delay = 2000;
 
