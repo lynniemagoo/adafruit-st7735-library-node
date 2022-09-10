@@ -281,8 +281,8 @@ async function main() {
         await testDrawBitmap(display, GREEN);
         await delay(step_delay);
 
-        //await testLines(display, YELLOW);
-        //await delay(step_delay);
+        await testLines(display, YELLOW);
+        await delay(step_delay);
 
         await testFastLines(display, RED, BLUE);
         await delay(step_delay);
