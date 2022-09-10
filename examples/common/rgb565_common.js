@@ -55,61 +55,54 @@ async function lcdTestPattern(display) {
     const w = display.width(), h = display.height(),
           localColors = [RED, YELLOW, GREEN, CYAN, BLUE, MAGENTA, BLACK, WHITE];
 
-    const doWork = async _ => {
-        for(let c=0; c<8; c++) {
-            await display.fillRect(0, h * c / 8, w, h / 8, localColors[c]);
-        }
-    };
-    doWork();
+    for(let c=0; c<8; c++) {
+        await display.fillRect(0, h * c / 8, w, h / 8, localColors[c]);
+    }
 }
 
 async function testLines(display, color) {
     const w = display.width(), h = display.height();
-    const doWork = async _ => {
-        let x, y;
+    let x, y;
 
-        await display.fillScreen(BLACK);
-        for(x=0; x < w-1; x+=6) {
-            // the JS version of this display is chainable so we can chain methods
-            // that modify the buffer or display.
-            await display.drawLine(0, 0, x, h-1, color);
-        }
-        for (y=0; y < h-1; y+=6) {
-            // the JS version of this display is chainable so we can chain methods
-            // that modify the buffer or display.
-            await display.drawLine(0, 0, w-1, y, color);
-        }
+    await display.fillScreen(BLACK);
+    for(x=0; x < w-1; x+=6) {
+        // the JS version of this display is chainable so we can chain methods
+        // that modify the buffer or display.
+        await display.drawLine(0, 0, x, h-1, color);
+    }
+    for (y=0; y < h-1; y+=6) {
+        // the JS version of this display is chainable so we can chain methods
+        // that modify the buffer or display.
+        await display.drawLine(0, 0, w-1, y, color);
+    }
 
-        await display.fillScreen(BLACK);
-        for (x=0; x < w-1; x+=6) {
-            await display.drawLine(w-1, 0, x, h-1, color);
-        }
-        for (y=0; y < h-1; y+=6) {
-            await display.drawLine(w-1, 0, 0, y, color);
-        }
+    await display.fillScreen(BLACK);
+    for (x=0; x < w-1; x+=6) {
+        await display.drawLine(w-1, 0, x, h-1, color);
+    }
+    for (y=0; y < h-1; y+=6) {
+        await display.drawLine(w-1, 0, 0, y, color);
+    }
 
-        await display.fillScreen(BLACK);
-        for (x=0; x < w-1; x+=6) {
-            await display.drawLine(0, h-1, x, 0, color);
-        }
-        for (y=0; y < h-1; y+=6) {
-            await display.drawLine(0, h-1, w-1, y, color);
-        }
+    await display.fillScreen(BLACK);
+    for (x=0; x < w-1; x+=6) {
+        await display.drawLine(0, h-1, x, 0, color);
+    }
+    for (y=0; y < h-1; y+=6) {
+        await display.drawLine(0, h-1, w-1, y, color);
+    }
 
-        await display.fillScreen(BLACK);
-        for (x=0; x < w-1; x+=6) {
-            await display.drawLine(w-1, h-1, x, 0, color);
-        }
-        for (y=0; y < h-1; y+=6) {
-            await display.drawLine(w-1, h-1, 0, y, color);
-        }
-    };
-    await doWork();
+    await display.fillScreen(BLACK);
+    for (x=0; x < w-1; x+=6) {
+        await display.drawLine(w-1, h-1, x, 0, color);
+    }
+    for (y=0; y < h-1; y+=6) {
+        await display.drawLine(w-1, h-1, 0, y, color);
+    }
 }
 
 async function testDrawText(display, text, color) {
 
-    // async doWork not required as not looping here.
     const previousWrap = display.getTextWrap();
     await display.setCursor(0,0)
                  .setTextWrap(true)
@@ -120,24 +113,18 @@ async function testDrawText(display, text, color) {
 
 async function testFastLines(display, color1, color2) {
     const w = display.width(), h = display.height();
-    let doWork;
 
     await display.fillScreen(BLACK);
 
-    doWork = async _ => {
-        for (let y=0; y < h-1; y+=5) {
-            await display.drawFastHLine(0, y, w-1, color1);
-        }
-        for (let x=0; x < w-1; x+=5) {
-            await display.drawFastVLine(x, 0, h-1, color2);
-        }
-    };
-    await doWork();
+    for (let y=0; y < h-1; y+=5) {
+        await display.drawFastHLine(0, y, w-1, color1);
+    }
+    for (let x=0; x < w-1; x+=5) {
+        await display.drawFastVLine(x, 0, h-1, color2);
+    }
 }
 
 async function tftPrintTest(display, colors = [WHITE], loop_delay = 1) {
-
-    // async doWork not required as not looping here.
 
     await display.fillScreen(BLACK);
 
@@ -189,106 +176,85 @@ async function tftPrintTest(display, colors = [WHITE], loop_delay = 1) {
 
 async function testDrawRects(display, color) {
     const w = display.width(), h = display.height();
-    const doWork = async _ => {
-        await display.fillScreen(BLACK);
+    await display.fillScreen(BLACK);
 
-        for(let x=0; x < h -1; x+=6) {
-            await display.drawRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color);
-        }
-    };
-    await doWork();
+    for(let x=0; x < h -1; x+=6) {
+        await display.drawRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color);
+    }
 }
 
 
 async function testFillRects(display, color1, color2) {
     const w = display.width(), h = display.height();
-    const doWork = async _ => {
-        await display.fillScreen(BLACK);
+    await display.fillScreen(BLACK);
 
-        for(let x=h-1; x>6; x-=6) {
-            await display.fillRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color1)
-                         .drawRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color2);
-        }
-    };
-    await doWork();
+    for(let x=h-1; x>6; x-=6) {
+        await display.fillRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color1)
+                     .drawRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color2);
+    }
 }
 
 
 async function testFillCircles(display, radius, color) {
     const w = display.width(), h = display.height();
 
-    const doWork = async _ => {
-        for(let x=radius; x<w-1; x+=radius*2) {
-            for(let y=radius; y < h-1; y+=radius*2) {
-                await display.fillCircle(x, y, radius, color)
-            }
+    for(let x=radius; x<w-1; x+=radius*2) {
+        for(let y=radius; y < h-1; y+=radius*2) {
+            await display.fillCircle(x, y, radius, color)
         }
-    };
-    await doWork();
+    }
 }
 
 
 async function testDrawCircles(display, radius, color) {
     const w = display.width(), h = display.height();
 
-    const doWork = async _ => {
-        for(let x=0; x<w-1+radius; x+=radius*2) {
-            for(let y=0; y<h-1+radius; y+=radius*2) {
-                await display.drawCircle(x, y, radius, color)
-            }
+    for(let x=0; x<w-1+radius; x+=radius*2) {
+        for(let y=0; y<h-1+radius; y+=radius*2) {
+            await display.drawCircle(x, y, radius, color)
         }
-    };
-    await doWork();
+    }
 }
 
 
 async function testRoundRects(display) {
     let w = display.width(), h = display.height();
-    const doWork = async _ => {
-        let x=0, y=0, color = 100;
+    let x=0, y=0, color = 100;
 
-        await display.fillScreen(BLACK);
+    await display.fillScreen(BLACK);
 
-        for(let i = 0 ; i <= 24; i++) {
-            await display.drawRoundRect(x, y, w, h, 5, color);
-            x+=2;
-            y+=3;
-            w-=4;
-            h-=6;
-            color+=1100;
-            //console.log(i);
-        }
-    };
-    await doWork();
+    for(let i = 0 ; i <= 24; i++) {
+        await display.drawRoundRect(x, y, w, h, 5, color);
+        x+=2;
+        y+=3;
+        w-=4;
+        h-=6;
+        color+=1100;
+        //console.log(i);
+    }
 }
 
 async function testTriangles(display) {
     const ow = display.width(), oh = display.height();
+    let color = RED,
+        w = ow/2,
+        x = oh,
+        y = 0,
+        z = ow;
 
-    const doWork = async _ => {
-        let color = RED,
-            w = ow/2,
-            x = oh,
-            y = 0,
-            z = ow;
+    await display.fillScreen(BLACK);
 
-        await display.fillScreen(BLACK);
-
-        for(let t = 0 ; t <= 15; t+=1) {
-            await display.drawTriangle(w, y, y, x, z, x, color);
-            x-=4;
-            y+=4;
-            z-=4;
-            color+=100;
-        }
-    };
-    await doWork();
+    for(let t = 0 ; t <= 15; t+=1) {
+        await display.drawTriangle(w, y, y, x, z, x, color);
+        x-=4;
+        y+=4;
+        z-=4;
+        color+=100;
+    }
 }
 
 
 async function testMediaButtons(display) {
-
-    // doWork async inline function not required as not looping here.
 
     await display.fillScreen(BLACK);
 
@@ -318,32 +284,31 @@ async function testMediaButtons(display) {
 
 async function testCP437CharacterSet(display, color) {
 
-    const doWork = async _ => {
-        const previousWrap = display.getTextWrap();
-        const previousCP437 = display.getCP437();
+    const previousWrap = display.getTextWrap();
+    const previousCP437 = display.getCP437();
 
-        await display.fillScreen(BLACK);
+    await display.fillScreen(BLACK);
 
-        await display.setTextSize(1)                // Normal 1:1 pixel scale
-                     .setTextWrap(false)
-                     .setTextColor(color)   // Draw colored text
-                     .setCursor(0, 0)               // Start at top-left corner
-                     .setCP437(true);                  // Use full 256 char 'Code Page 437' font
+    await display.setTextSize(1)                // Normal 1:1 pixel scale
+                 .setTextWrap(false)
+                 .setTextColor(color)   // Draw colored text
+                 .setCursor(0, 0)               // Start at top-left corner
+                 .setCP437(true);                  // Use full 256 char 'Code Page 437' font
 
-        // Not all the characters will fit on the display. This is normal.
-        // Library will draw what it can and the rest will be clipped.
-        for(let i=0; i<256; i++) {
-            // display.write will simply chain work onto the queue.
-            // Don't have to await each step as this is done below with final
-            // display.wait.
-            if (i === 0x0A) continue;
-            display.write(i);
-            if ((i > 0) && (i % 21 == 0)) display.println();
-        }
-        await display.setCP437(previousCP437)
-                     .setTextWrap(previousWrap);
-    };
-    await doWork();
+    // Not all the characters will fit on the display. This is normal.
+    // Library will draw what it can and the rest will be clipped.
+    for(let i=0; i<256; i++) {
+        // display.write will simply chain work onto the queue.
+        // Don't have to await each step as this is done below with final
+        // display.wait.
+        if (i === 0x0A) continue;
+        display.write(i);
+        if ((i > 0) && (i % 21 == 0)) display.println();
+    }
+    // await require here to ensure that all write operations in loop have finished
+    // as we did not await within the loop.
+    await display.setCP437(previousCP437)
+                 .setTextWrap(previousWrap);
 }
 
 
