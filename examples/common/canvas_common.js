@@ -205,9 +205,9 @@ async function testDrawRects(canvas, display, color) {
 
     for(let x=0; x < h -1; x+=6) {
         await canvas.drawRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color);
+        await display.fastRenderGFXcanvas16(canvas);
+        await delay(10);
     }
-
-    await display.fastRenderGFXcanvas16(canvas);
     await delay(1500);
 }
 
@@ -217,11 +217,11 @@ async function testFillRects(canvas, display, color1, color2) {
     await canvas.fillScreen(BLACK);
 
     for(let x=h-1; x>6; x-=6) {
-        await canvas.fillRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color1)
-                     .drawRect((w-1)/2 - x/2, (h-1)/2 - x/2, x, x, color2);
+        await canvas.fillRect(toInt((w-1)/2 - x/2), toInt((h-1)/2 - x/2), x, x, color1)
+                    .drawRect(toInt((w-1)/2 - x/2), toInt((h-1)/2 - x/2), x, x, color2);
+        await display.fastRenderGFXcanvas16(canvas);
+        await delay(10);
     }
-    
-    await display.fastRenderGFXcanvas16(canvas);
     await delay(1500);
 }
 
@@ -424,16 +424,15 @@ async function testAnimate(canvas, display, bitmap, bitmapWidth, bitmapHeight, a
         // Draw each snowflake:
         for(f=0; f< NUMFLAKES; f++) {
             //canvas.drawBitmap(
-            canvas.draw1BitBitmap(icons[f][XPOS], icons[f][YPOS], bitmap, bitmapWidth, bitmapHeight, color);
+            await canvas.draw1BitBitmap(icons[f][XPOS], icons[f][YPOS], bitmap, bitmapWidth, bitmapHeight, color);
             color += 1100;
         }
 
-        await canvas;
-        await delay(200);        // Pause for 2/10 second
+        await display.fastRenderGFXcanvas16(canvas);
+        await delay(5);        // Pause for 5ms
 
         // Then update coordinates of each flake...
         for(f=0; f< NUMFLAKES; f++) {
-            canvas.draw1BitBitmap(icons[f][XPOS], icons[f][YPOS], bitmap, bitmapWidth, bitmapHeight, BLACK);
             icons[f][YPOS] += icons[f][DELTAY];
             // If snowflake is off the bottom of the screen...
             if (icons[f][YPOS] >= h) {
@@ -443,10 +442,8 @@ async function testAnimate(canvas, display, bitmap, bitmapWidth, bitmapHeight, a
                 icons[f][DELTAY] = randomInteger(1, 6);
             }
         }
-        await canvas;
-        await display.fastRenderGFXcanvas16(canvas);
-        await delay(200);
     }
+    await delay(500);
 }
 
 

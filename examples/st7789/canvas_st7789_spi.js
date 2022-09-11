@@ -242,7 +242,10 @@ async function main() {
         step_delay = 2000;
 
     while (count--) {
-        await display.setRotation(rotation);
+        // When using a Canvas, set either the rotation of the display or the rotation of the Canvas,
+        // But NOT both.
+
+        //await display.setRotation(rotation);
         console.log("rotation:%d", rotation);
         const w = display.width(), h = display.height();
         const canvasOptions = {
