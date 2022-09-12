@@ -1,10 +1,10 @@
 {
-  "name": "adafruit-st7735-library",
+  "name": "@lynniemagoo/adafruit-st7735-library",
   "version": "1.0.0",
   "description": "NodeJS Promise-based port of C/C++ Adafruit-ST7735-Library from Github - Library for Family of ST77XX TFT displays including ST7735, ST7789.",
   "main": "index.js",
   "dependencies": {
-    "adafruit-gfx-library": "^1.0.0"
+    "@lynniemagoo/adafruit-gfx-library": "^1.0.0"
   },  
   "files": {
     "lib": "lib"
