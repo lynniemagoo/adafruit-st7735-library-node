@@ -1,6 +1,6 @@
 {
   "name": "@lynniemagoo/adafruit-st7735-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NodeJS Promise-based port of C/C++ Adafruit-ST7735-Library from Github - Library for Family of ST77XX TFT displays including ST7735, ST7789.",
   "main": "index.js",
   "dependencies": {
@@ -30,12 +30,11 @@
     "node",
     "i2c",
     "spi",
-    "canvas",
     "adafruit",
     "display",
     "tft",
-    "oled",
-    "ssd1306"
+    "st7735",
+    "st7789"
   ],
   "author": "Lyndel McGee",
   "email": "LynnieMagoo@yahoo.com",
