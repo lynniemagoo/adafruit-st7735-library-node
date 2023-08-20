@@ -167,7 +167,7 @@ function createDisplayOptions(namedDisplayType) {
                 spiMaxSpeedHz:60000000
             }
             break;
-        case "WAVSHARE-240-240":
+        case "WAVESHARE-240-240":
             // WaveShare ST7789 requires reversal of InversionMode.
             displayOptions = {
                 width:240,
@@ -179,12 +179,12 @@ function createDisplayOptions(namedDisplayType) {
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
                 spiDeviceNumber:0,
-                spiMaxSpeedHz:60000000,
+                spiMaxSpeedHz:64000000,
                 reverseInversionMode:true
             }
             break;
 
-        case "WAVSHARE-240-320":
+        case "WAVESHARE-240-320":
             // WaveShare ST7789 requires reversal of InversionMode.
             displayOptions = {
                 width:240,
@@ -196,12 +196,12 @@ function createDisplayOptions(namedDisplayType) {
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
                 spiDeviceNumber:0,
-                spiMaxSpeedHz:60000000,
+                spiMaxSpeedHz:64000000,
                 reverseInversionMode:true
             }
             break;
 
-        case "WAVSHARE-135-240":
+        case "WAVESHARE-135-240":
             // WaveShare ST7789 requires reversal of InversionMode.
             displayOptions = {
                 width:135,
@@ -213,7 +213,7 @@ function createDisplayOptions(namedDisplayType) {
                               // if set to -1 then will not be used.
                 spiBusNumber:0,
                 spiDeviceNumber:0,
-                spiMaxSpeedHz:60000000,
+                spiMaxSpeedHz:64000000,
                 reverseInversionMode:true
             }
             break;
@@ -227,7 +227,7 @@ function createDisplayOptions(namedDisplayType) {
 
 async function main() {
     const displayType = "ADAFRUIT-3787";
-    //const displayType = "WAVSHARE-240-240";
+    //const displayType = "WAVESHARE-240-240";
     const displayOptions = createDisplayOptions(displayType);
     const display = new Adafruit_ST7789(displayOptions);
     console.log("SPI Modes:", Adafruit_ST7789.SPI_MODES);
